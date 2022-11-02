@@ -2,3 +2,4 @@
 /.inventory_postgres_data
 /.payment_postgres_data
 /.redis-data
+*.pyc
