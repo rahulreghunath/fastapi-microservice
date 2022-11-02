@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+redis-om
+sqlalchemy
+passlib
+bcrypt
+python-jose
+python-multipart
+tortoise-orm
+alembic
+pytest
+requests
+schema
+psycopg2
+requests

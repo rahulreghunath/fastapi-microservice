@@ -1,0 +1,65 @@
+version: '3'
+
+networks:
+  fastapi:
+
+services:  
+  payment:
+    build:
+      context: .
+      dockerfile: docker/dockerfiles/python.dockerfile
+      args:
+        - USER_ID=1000
+        - GROUP_ID=1000
+    command: "uvicorn payment.main:app --host 0.0.0.0 --port 8000 --reload"
+    volumes:
+      - .:/home/fastapi/code
+    ports:
+      - "8000:8000"
+    networks:
+      - fastapi
+  inventory:
+    build:
+      context: .
+      dockerfile: docker/dockerfiles/python.dockerfile
+      args:
+        - USER_ID=1000
+        - GROUP_ID=1000
+    command: "uvicorn inventory.main:app --host 0.0.0.0 --port 8001 --reload"
+    volumes:
+      - .:/home/fastapi/code
+    ports:
+      - "8001:8001"
+    networks:
+      - fastapi
+  postgres_inventory:
+    image: postgres:10.4
+    volumes:
+      - ./.inventory_postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=password
+    networks:
+      - fastapi
+  postgres_payment:
+    image: postgres:10.4
+    volumes:
+      - ./.payment_postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_PASSWORD=password
+    networks:
+      - fastapi
+  redis:
+    image: 'redis/redis-stack'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - ./.redis-data/:/data
+    ports:
+      - "8002:8001"
+      - "6379:6379"
+    networks:
+      - fastapi
