@@ -10,10 +10,11 @@ services:
       dockerfile: docker/dockerfiles/python.dockerfile
       args:
         - USER_ID=1000
-        - GROUP_ID=1000
+        - GROUP_ID=1000        
+        - APP_DIR=payment        
     command: "uvicorn payment.main:app --host 0.0.0.0 --port 8000 --reload"
     volumes:
-      - .:/home/fastapi/code
+      - .:/home/fastapi/code/payment/
     ports:
       - "8000:8000"
     networks:
@@ -25,9 +26,10 @@ services:
       args:
         - USER_ID=1000
         - GROUP_ID=1000
+        - APP_DIR=inventory 
     command: "uvicorn inventory.main:app --host 0.0.0.0 --port 8001 --reload"
     volumes:
-      - .:/home/fastapi/code
+      - .:/home/fastapi/code/inventory/
     ports:
       - "8001:8001"
     networks:

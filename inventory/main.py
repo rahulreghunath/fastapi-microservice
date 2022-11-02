@@ -1,7 +1,7 @@
 from typing import List
 from typing import Union
 from redis_om import get_redis_connection
-from fastapi import FastAPI,Depends
+from fastapi import FastAPI,Depends,HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
