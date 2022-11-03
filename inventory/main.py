@@ -1,11 +1,11 @@
 from typing import List
 from typing import Union
-from redis_om import get_redis_connection
 from fastapi import FastAPI,Depends,HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
 from inventory import schemas,models
+from inventory.redis_app import redis
 
 from inventory.database.database import get_db
 
@@ -13,7 +13,10 @@ app = FastAPI()
 
 # cross origin resource sharing
 origins = [
-    "http://localhost:3000",
+    "http://localhost:8000",
+    "http://localhost:8001",
+    "http://localhost:8002",
+    "http://localhost:8003"
 ]
 app.add_middleware(
     CORSMiddleware,
@@ -23,13 +26,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-redis = get_redis_connection(
-    host='redis',
-    port=6379,
-    password='',
-    decode_responses=True
-)
 
 @app.get(
     "/products",

@@ -1,0 +1,5 @@
+/venv
+/.inventory_postgres_data
+/.payment_postgres_data
+/.postgres_authentication
+/.redis-data

@@ -19,3 +19,24 @@ class ProductSchema(ProductBaseSchema):
         """_summary_"""
 
         orm_mode = True
+        
+class Token(BaseModel):
+    """_summary_
+
+    Args:
+        BaseModel (_type_): _description_
+    """
+
+    access_token: str
+    token_type: str
+
+
+class TokenData(BaseModel):
+    """_summary_
+
+    Args:
+        BaseModel (_type_): _description_
+    """
+
+    id: int
+    token: str

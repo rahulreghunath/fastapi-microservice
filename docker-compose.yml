@@ -7,14 +7,13 @@ services:
   payment:
     build:
       context: .
-      dockerfile: docker/dockerfiles/python.dockerfile
+      dockerfile: payment/python.dockerfile
       args:
         - USER_ID=1000
-        - GROUP_ID=1000        
-        - APP_DIR=payment        
+        - GROUP_ID=1000              
     command: "uvicorn payment.main:app --host 0.0.0.0 --port 8000 --reload"
     volumes:
-      - .:/home/fastapi/code/payment/
+      - ./payment:/home/fastapi/code/payment/
     ports:
       - "8000:8000"
     networks:
@@ -22,22 +21,37 @@ services:
   inventory:
     build:
       context: .
-      dockerfile: docker/dockerfiles/python.dockerfile
+      dockerfile: inventory/python.dockerfile
       args:
         - USER_ID=1000
         - GROUP_ID=1000
-        - APP_DIR=inventory 
     command: "uvicorn inventory.main:app --host 0.0.0.0 --port 8001 --reload"
     volumes:
-      - .:/home/fastapi/code/inventory/
+      - ./inventory:/home/fastapi/code/inventory/
     ports:
       - "8001:8001"
     networks:
       - fastapi
+  # Authentication Service
+  authentication:
+    build:
+      context: .
+      dockerfile: inventory/python.dockerfile
+      args:
+        - USER_ID=1000
+        - GROUP_ID=1000
+    command: "uvicorn authentication.main:app --host 0.0.0.0 --port 8001 --reload"
+    volumes:
+      - ./authentication:/home/fastapi/code/authentication/
+    ports:
+      - "8003:8001"
+    networks:
+      - fastapi
+
   postgres_inventory:
     image: postgres:10.4
     volumes:
-      - ./.inventory_postgres_data:/var/lib/postgresql/data
+      - ./docker/volumes/.inventory_postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     environment:
@@ -47,9 +61,19 @@ services:
   postgres_payment:
     image: postgres:10.4
     volumes:
-      - ./.payment_postgres_data:/var/lib/postgresql/data
+      - ./docker/volumes/.payment_postgres_data:/var/lib/postgresql/data
     ports:
       - "5433:5432"
+    environment:
+      - POSTGRES_PASSWORD=password
+    networks:
+      - fastapi
+  postgres_authentication:
+    image: postgres:10.4
+    volumes:
+      - ./docker/volumes/.postgres_authentication:/var/lib/postgresql/data
+    ports:
+      - "5434:5432"
     environment:
       - POSTGRES_PASSWORD=password
     networks:
@@ -59,7 +83,7 @@ services:
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
     volumes:
-      - ./.redis-data/:/data
+      - ./docker/volumes/.redis-data/:/data
     ports:
       - "8002:8001"
       - "6379:6379"
