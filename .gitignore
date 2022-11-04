@@ -3,3 +3,4 @@
 /.payment_postgres_data
 /.redis-data
 *.pyc
+*.log
