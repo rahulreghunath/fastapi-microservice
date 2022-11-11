@@ -50,7 +50,7 @@ async def post_orders(
 ):
     permission.check_permission(user,"can-add-order")
     
-    req = requests.get(f'http://inventory:8001/products/{request.product_id}')
+    req = requests.get(f'http://inventory:8001/api/inventory/products/{request.product_id}')
 
     product = req.json()
     new_order = models.Order(

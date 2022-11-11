@@ -11,5 +11,7 @@ alembic
 pytest
 requests
 schema
-psycopg2
+psycopg2-binary
 requests
+firebase-admin
+psycopg

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "cloudium-test",
+  "private_key_id": "034f27d5d4d80362a051d0ed7a6e8b73d8561fe7",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEuwIBADANBgkqhkiG9w0BAQEFAASCBKUwggShAgEAAoIBAQC6EkDDiEjjo4JZ\n2WLer9yBMFZT7A5zYczQQIxuExP5XvDJuRDclW2JC1JAZ4s7kgNtArN+bO2urwOu\nDq8Ux867PD0i37GGyx1OSIZWAK3wPNFyFM/eMtfXP/chWrMpNOwIq3ePbxyc5Cii\nkDGsjIel+8Gl7Ma3NOofXu7DAT43gQV4jeNOKpYvmety+9iTYAEseFowPFBk8SWA\nW977+EABqrHOq5XfQLLizVHYtLlA+jHykcDBbVNaqGNRynePIjAMZJ5LAonD45AQ\nobgyWX/5+9G2qDILbGvrIa5GqJoBTaOc6yG58dwb6R5anfiJODfzlgGzbMSU1Gak\nSjDz0P63AgMBAAECggEAHT1CDRfs8Eyg7rKQ7VJwUaLBZhWpnasILs994cxArsaj\nCuf4hNk8abUsOy+qOvWycR5kC2Fdpj4dU2w+SgMt8tFAACtrr7VaSRNvfLNFogNE\nnGs10QJnVY1ZLdYdYkPNNX2QX6tDsUnPMuB61dUNeeFKaGMBRQfdJInb9ivLVZg9\nRKyDgRNaJb+/vpsOaB4gk8xZEtCWG7hqg4kqhIMJdqPdgE5DozKgZ5TxUeEjBnNy\n3D9WVu2qSIvuySC3lffUl+Hct8Oph7wBllfJmKcHXWPr0YmsKYqd6+6jdSup87jv\nq4GoVAcURSX8LCFKnogw978wmMsmRgQYEEfPSRRXzQKBgQDyhdrq8VvBE/1EJegq\npdrQnOxm6Hv1XA0Zeoyc6sIa+QoVgsyJnAZsepEstpyTvkFr4mRN85+AcoqfxeyR\ntoBiJ09+0uwqHDUsM5Vx4JZt8ktgNsk/aD+UnsGiXweg6X/4e1ArvxpT1Uk4iW2x\nItQmOMDtZYNuxNw9YXnOUvUNIwKBgQDEaVB9phr0WhH4kMH4jBN8Aa8aSnT5xS1S\njvWGjxp6dCrUckICS6XeyzxVfIQuhPwIGyKO+U4sPbWZwjGgbPljzt99RH9kLoXA\ncDkIcwgDfXjBmvqPX8c486Sh5xQy/XTqa8+KJCuugHZ58Wr5j8JhZrWASbEhLxRP\nlSvyshHzXQJ/GKF/mlzo9LMTBdjTu4EcuBM37zutWz3+Fphbr5QoIpUocQbXvyIZ\nhOrt05y4SkkIW+yiQ0h66pC3g4KWhDYE0/MqH7dMRPqYa+TRSL+Gh6QUA7GMvuPX\nkUCOae881xrf5Fyhx8+g3OLMjPFoMpVW9orNDU9CCf30YEeGF25VdQKBgQCKkTI0\nMyf5FEJxds8iJtDoP9flWHpGbJGZGTqm//bSRXqh/yoKrIwNLp0WQo6Os0uL/HjZ\nHZHFLJQeMh8I61jWzXBm1Bh7+UZricDy8RTKQY8cJ9Z1qEDJMTsI7hoWDzKY4A6/\nit02c3MifOvXvVCJnwiVxWet3aUasEcdJfv8EQKBgGNC2IwoVILUzk5Fw4ZPnVwr\nFj3DkY/Vy+l6yhE0tXExOyIe2B5tjuoNBzc0qSk+BLR+bclWszUHfFzbyCavvAKv\nv4ZU7zEgNMukoqwAWiZjePITSd/86RrnH8Mm/X4c8vHvrTrEnu+U4Y2m4ZBxYPiY\nm14yX15B28frYSt+RjCv\n-----END PRIVATE KEY-----\n",
+  "client_email": "hibiscus-test@cloudium-test.iam.gserviceaccount.com",
+  "client_id": "102786434615452771758",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/hibiscus-test%40cloudium-test.iam.gserviceaccount.com"
+}

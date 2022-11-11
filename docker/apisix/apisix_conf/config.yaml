@@ -24,6 +24,12 @@ apisix:
     ip: "0.0.0.0"
     port: 9092
 
+vault:
+  host: "http://vault:1234"
+  timeout: 10
+  token: "root"
+  prefix: 'kv/apisix/'
+
 deployment:
   admin:
     allow_admin:               # http://nginx.org/en/docs/http/ngx_http_access_module.html#allow
