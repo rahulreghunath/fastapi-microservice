@@ -5,3 +5,6 @@
 *.pyc
 *.log
 *.rdb
+/.pants.d
+/.pids
+/dist

@@ -15,6 +15,7 @@ ENV GOOGLE_APPLICATION_CREDENTIALS="/home/fastapi/code/cloudium-test-034f27d5d4d
 RUN mkdir /home/fastapi/code
 WORKDIR /home/fastapi/code
 COPY cloudium-test-034f27d5d4d8.json /home/fastapi/code/
+COPY ./shared /home/fastapi/code/shared/
 COPY requirements.txt /home/fastapi/code/
 # Cashing pip
 RUN --mount=type=cache,target=/root/.cache/pip pip install -r requirements.txt

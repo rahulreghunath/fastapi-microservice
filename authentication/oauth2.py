@@ -9,7 +9,7 @@ from sqlalchemy.orm import Session
 
 from authentication.database.database import get_db
 from authentication.jwk_token import verify_token
-
+from shared.messages import LOGIN_ERROR
 scopes = {
     "blogs": "Manage Blogs",
     "users": "Manage Users",
@@ -37,7 +37,7 @@ def get_current_user(
     """
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="Could not validate credentials",
+        detail=LOGIN_ERROR,
         headers={"WWW-Authenticate": "Bearer"},
     )
 

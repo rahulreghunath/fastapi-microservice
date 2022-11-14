@@ -44,5 +44,5 @@ class TokenData(BaseModel):
         BaseModel (_type_): _description_
     """
 
-    id: int
+    id: str
     token: str
