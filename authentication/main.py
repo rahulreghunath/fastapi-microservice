@@ -7,7 +7,7 @@ from firebase_admin import auth
 from fastapi.background import BackgroundTasks
 from typing import Union
 from redis_om import get_redis_connection
-from fastapi import FastAPI, Depends, status, Request
+from fastapi import FastAPI, Depends, status, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from fastapi.security import OAuth2PasswordRequestForm
@@ -80,30 +80,35 @@ def login(
         _type_: _description_
     """
 
-    user = db.query(models.User).filter(
-        models.User.email == request.username).first()
-
-    if not user:
+    # user = db.query(models.User).filter(
+    #     models.User.email == request.username).first()
+    
+    data = {
+        'email':request.username,
+        'password':request.password,
+        'returnSecureToken':True
+    }
+    response = requests.post(
+        'p',
+        data=data,
+        timeout=10
+    )
+    if response.status_code != 200:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid Credentials"
         )
-    if not Hash.verify(user.password, request.password):
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED, detail="Incorrect Password"
-        )
-
+    firebase_admin.initialize_app()
+    decoded_token = auth.verify_id_token(response.json()['idToken'])
+    decoded_token['key']='user-key'
     access_token = create_access_token(
-        data={"user": user.id, 'key': 'user-key'})
-    key = f'{user.id}-{access_token}'
+        data=decoded_token
+    )
+    key = f'{decoded_token.get("uid")}-{access_token}'
 
     user_data = json.dumps(
-        {'user': user.id, 'email': user.email, 'permissions': ['can-see-products']})
+        {'user': decoded_token.get("uid"), 'email': decoded_token.get("email"), 'permissions': ['can-see-products']})
     redis.hset('USER_SESSION', key, user_data)
-
-    # redis.set(key, user_data)
-
-    return {"access_token": access_token, "token_type": "bearer"}
-
+    return {"access_token": response.json()['idToken'], "token_type": "bearer"}
 
 @app.get(
     "/login1",

@@ -33,7 +33,10 @@ def get_products(order_id: int, db: Session = Depends(get_db)):
     response_model=List[schemas.OrderSchema],
     tags=["payment"],
 )
-def get_products(db: Session = Depends(get_db)):
+def get_products(
+    db: Session = Depends(get_db),
+    user: schemas.TokenData = Depends(get_current_user),
+):
     orders = db.query(models.Order).all()
     return orders
 

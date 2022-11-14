@@ -4,3 +4,4 @@
 /.redis-data
 *.pyc
 *.log
+*.rdb
