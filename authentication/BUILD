@@ -1,7 +1,7 @@
 python_sources(
     name="authentication",
     dependencies=[
-        "shared-0.0.1",
+        "shared",
         "//:requirements"
     ],
 )

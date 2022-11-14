@@ -1,1 +1,1 @@
-LOGIN_ERROR='Could not validate credentials'
+LOGIN_ERROR='Could not validate credentials version 0.0.3'

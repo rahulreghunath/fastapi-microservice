@@ -7,7 +7,7 @@ backend_packages = [
     "pants.backend.python.lint.pylint",
     "pants.backend.python.typecheck.mypy",
     "pants.backend.python.lint.black",
-    "pants.backend.experimental.python
+    "pants.backend.experimental.python"
 ]
 [anonymous-telemetry]
 enabled = false
